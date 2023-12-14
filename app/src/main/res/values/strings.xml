@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">android_introduction_personal_project</string>
+    <string name="login">로그인</string>
+    <string name="sign_up">회원가입</string>
+    <string name="name">이름</string>
+    <string name="id">아이디</string>
+    <string name="password">비밀번호</string>
+    <string name="check_password">비밀번호 확인</string>
+    <string name="please_input_name">이름을 입력해주세요.</string>
+    <string name="please_input_id">아이디를 입력해주세요.</string>
+    <string name="please_input_password">비밀번호를 입력해주세요.</string>
+    <string name="please_input_check_password">비밀번호를 확인해주세요.</string>
+    <string-array name="mbti_array">
+        <item>MBTI를 선택해주세요.</item>
+        <item>INTJ</item>
+        <item>INTP</item>
+        <item>INFJ</item>
+        <item>INFP</item>
+        <item>ISTJ</item>
+        <item>ISTP</item>
+        <item>ISTJ</item>
+        <item>ISTP</item>
+        <item>ENTJ</item>
+        <item>ENTP</item>
+        <item>ENFJ</item>
+        <item>ENFP</item>
+        <item>ESTJ</item>
+        <item>ESTP</item>
+        <item>ESFJ</item>
+        <item>ESFP</item>
+    </string-array>
+</resources>

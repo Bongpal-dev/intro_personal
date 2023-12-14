@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <style name="title_string">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/sb_aggro_l</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="edit_string">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColorHint">#4DC8FFFF</item>
+    </style>
+
+</resources>
