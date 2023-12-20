@@ -15,11 +15,11 @@ class HomeActivity : AppCompatActivity() {
     val iv_photo by lazy { findViewById<ImageView>(R.id.iv_home_photo) }
     val btn_toMaint by lazy { findViewById<Button>(R.id.btn_to_main) }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         val userDetails = Users.userList.find { it.id == intent.getStringExtra("id") }
+
         toMainClick()
         userInfoUpdate(
             if (userDetails != null) {

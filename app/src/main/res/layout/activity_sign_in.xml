@@ -17,7 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/indigo_logo"
-            app:layout_constraintBottom_toTopOf="@id/tv_id"
+            app:layout_constraintBottom_toTopOf="@id/tv_sign_in_id"
             app:layout_constraintDimensionRatio="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,19 +26,19 @@
             app:layout_constraintWidth_percent="0.9" />
 
         <TextView
-            android:id="@+id/tv_id"
+            android:id="@+id/tv_sign_in_id"
             style="@style/title_string"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/id"
-            app:layout_constraintBottom_toTopOf="@id/et_id"
-            app:layout_constraintStart_toStartOf="@id/et_id"
+            app:layout_constraintBottom_toTopOf="@id/et_sign_in_id"
+            app:layout_constraintStart_toStartOf="@id/et_sign_in_id"
             app:layout_constraintTop_toBottomOf="@id/iv_logo"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <EditText
-            android:id="@+id/et_id"
+            android:id="@+id/et_sign_in_id"
             style="@style/edit_string"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             app:layout_constraintBottom_toTopOf="@+id/tv_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_id"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sign_in_id"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:text="@string/password"
             app:layout_constraintBottom_toTopOf="@id/et_password"
             app:layout_constraintStart_toStartOf="@id/et_password"
-            app:layout_constraintTop_toBottomOf="@id/et_id"
+            app:layout_constraintTop_toBottomOf="@id/et_sign_in_id"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <EditText
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="32dp"
-            android:background="@drawable/inactive_rectangle_button"
+            android:background="@drawable/active_rectangle_button"
             android:paddingHorizontal="30dp"
             android:text="@string/login"
             android:textColor="#172A87"

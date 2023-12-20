@@ -5,5 +5,6 @@ data class User(
     val id: String,
     val pw: String,
     val age: Int,
+    val email:String,
     val mbti: String
 )
