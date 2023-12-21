@@ -25,7 +25,7 @@ class SignInActivity : AppCompatActivity() {
         clickSignUp()
         setResultNext()
 
-        Users.addUser(User("배영수", "etgt777", "12345", 33, "ENTP"))
+        Users.addUser(User("배영수", "etgt777", "12345", 33, "etgt@naver.com","ENTP"))
     }
 
     private fun clickLogin() {
