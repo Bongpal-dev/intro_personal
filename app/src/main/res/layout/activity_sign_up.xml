@@ -263,7 +263,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="48dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/active_rectangle_button"
+        android:background="@drawable/inactive_rectangle_button"
         android:text="@string/sign_up"
         android:textColor="#172A87"
         android:textSize="15sp"

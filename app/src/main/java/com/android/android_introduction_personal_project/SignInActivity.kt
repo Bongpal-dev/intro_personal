@@ -12,75 +12,77 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 
 class SignInActivity : AppCompatActivity() {
-    private val id by lazy { findViewById<EditText>(R.id.et_sign_in_id) }
-    private val password by lazy { findViewById<EditText>(R.id.et_password) }
-    private val loginButton by lazy { findViewById<Button>(R.id.btn_login) }
-    private val signUpButton by lazy { findViewById<ConstraintLayout>(R.id.layout_sign_up) }
+    private val etId by lazy { findViewById<EditText>(R.id.et_sign_in_id) }
+    private val etPassword by lazy { findViewById<EditText>(R.id.et_password) }
+    private val btnLogin by lazy { findViewById<Button>(R.id.btn_login) }
+    private val btnSignUp by lazy { findViewById<ConstraintLayout>(R.id.layout_sign_up) }
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
-        clickLogin()
-        clickSignUp()
-        setResultNext()
-
-        Users.addUser(User("배영수", "etgt777", "12345", 33, "etgt@naver.com","ENTP"))
+        initialize()
     }
 
-    private fun clickLogin() {
-        loginButton.setOnClickListener {
+    private fun initialize() {
+        loginInit()
+        signUpInit()
+        resultLauncherInit()
+    }
+
+    private fun loginInit() {
+        btnLogin.setOnClickListener {
             when {
-                id.text.isEmpty() && password.text.isEmpty() -> {
+                etId.text.isEmpty() && etPassword.text.isEmpty() -> {
                     showToast(this, "아이디와 비밀번호를 입력해주세요")
                     return@setOnClickListener
                 }
 
-                id.text.isEmpty() -> {
+                etId.text.isEmpty() -> {
                     showToast(this, "아이디를 입력해주세요")
                     return@setOnClickListener
                 }
 
-                password.text.isEmpty() -> {
+                etPassword.text.isEmpty() -> {
                     showToast(this, "비밀번호를 입력해주세요")
                     return@setOnClickListener
                 }
 
-                Users.userList.none { it.id == id.text.toString() } -> {
+                Users.userList.none { it.id == etId.text.toString() } -> {
                     showToast(this, "가입되지 않은 아이디입니다")
                     return@setOnClickListener
                 }
-                Users.userList.find { it.id == id.text.toString() }?.pw != password.text.toString() -> {
+
+                Users.userList.find { it.id == etId.text.toString() }?.pw != etPassword.text.toString() -> {
                     showToast(this, "비밀번호가 틀렸습니다")
                     return@setOnClickListener
                 }
             }
 
             val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra("id", id.text.toString())
+            intent.putExtra("id", etId.text.toString())
             startActivity(intent)
         }
     }
 
-    private fun clickSignUp() {
-        signUpButton.setOnClickListener {
+    private fun signUpInit() {
+        btnSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             resultLauncher.launch(intent)
         }
     }
 
-    private fun setResultNext() {
-        resultLauncher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val nowUser = Users.userList.find {
-                    it.id == (result.data?.getStringExtra("id") ?: "")
+    private fun resultLauncherInit() {
+        resultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == RESULT_OK) {
+                    val nowUser = Users.userList.find {
+                        it.id == (result.data?.getStringExtra("id") ?: "")
+                    }
+                    etId.setText(nowUser?.id ?: "")
+                    etPassword.setText(nowUser?.pw ?: "")
                 }
-                id.setText(nowUser?.id ?: "")
-                password.setText(nowUser?.pw ?: "")
             }
-        }
     }
 }
 

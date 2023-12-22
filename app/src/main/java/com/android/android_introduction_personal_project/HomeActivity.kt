@@ -8,50 +8,42 @@ import android.widget.TextView
 import kotlin.random.Random
 
 class HomeActivity : AppCompatActivity() {
-    val tv_name by lazy { findViewById<TextView>(R.id.tv_home_name) }
-    val tv_id by lazy { findViewById<TextView>(R.id.tv_home_id) }
-    val tv_age by lazy { findViewById<TextView>(R.id.tv_age_value) }
-    val tv_mbti by lazy { findViewById<TextView>(R.id.tv_mbti_value) }
-    val iv_photo by lazy { findViewById<ImageView>(R.id.iv_home_photo) }
-    val btn_toMaint by lazy { findViewById<Button>(R.id.btn_to_main) }
+    val tvName by lazy { findViewById<TextView>(R.id.tv_home_name) }
+    val tvId by lazy { findViewById<TextView>(R.id.tv_home_id) }
+    val tvAge by lazy { findViewById<TextView>(R.id.tv_age_value) }
+    val tvMbti by lazy { findViewById<TextView>(R.id.tv_mbti_value) }
+    val ivPhoto by lazy { findViewById<ImageView>(R.id.iv_home_photo) }
+    val btnToMain by lazy { findViewById<Button>(R.id.btn_to_main) }
+    val userDetails by lazy {
+        Users.userList.find { it.id == intent.getStringExtra("id") }
+            ?: User("Null", "null", "null", -1, "null", "null")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        val userDetails = Users.userList.find { it.id == intent.getStringExtra("id") }
-
-        toMainClick()
-        userInfoUpdate(
-            if (userDetails != null) {
-                userDetails
-            } else {
-                return
-            },
-            Random.nextInt(5)
-        )
-
-
-
+        toMainInit()
+        userInfoUpdate(userDetails, Random.nextInt(5))
     }
 
     private fun userInfoUpdate(d: User, p: Int) {
-        tv_name.text = d.name
-        tv_id.text = d.id
-        tv_age.text = d.age.toString()
-        tv_mbti.text = d.mbti
+        tvName.text = d.name
+        tvId.text = d.id
+        tvAge.text = d.age.toString()
+        tvMbti.text = d.mbti
 
         when (p) {
-            0 -> iv_photo.setImageDrawable(getDrawable(R.drawable.illho))
-            1 -> iv_photo.setImageDrawable(getDrawable(R.drawable.leeho))
-            2 -> iv_photo.setImageDrawable(getDrawable(R.drawable.samho))
-            3 -> iv_photo.setImageDrawable(getDrawable(R.drawable.saho))
-            4 -> iv_photo.setImageDrawable(getDrawable(R.drawable.ohho))
+            0 -> ivPhoto.setImageDrawable(getDrawable(R.drawable.illho))
+            1 -> ivPhoto.setImageDrawable(getDrawable(R.drawable.leeho))
+            2 -> ivPhoto.setImageDrawable(getDrawable(R.drawable.samho))
+            3 -> ivPhoto.setImageDrawable(getDrawable(R.drawable.saho))
+            4 -> ivPhoto.setImageDrawable(getDrawable(R.drawable.ohho))
         }
     }
 
-    private fun toMainClick() {
-        btn_toMaint.setOnClickListener {
-                    finish()
+    private fun toMainInit() {
+        btnToMain.setOnClickListener {
+            finish()
         }
     }
 }
